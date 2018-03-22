@@ -13,6 +13,14 @@
 		1C0ABFD820644463000C8FB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C0ABFD720644463000C8FB6 /* Assets.xcassets */; };
 		1C0ABFDB20644463000C8FB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C0ABFD920644463000C8FB6 /* LaunchScreen.storyboard */; };
 		1C0ABFE620644464000C8FB6 /* InfiniteScrollableTabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFE520644464000C8FB6 /* InfiniteScrollableTabBarControllerTests.swift */; };
+		1C0ABFF1206444B1000C8FB6 /* InfiniteScrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFF0206444B1000C8FB6 /* InfiniteScrolling.swift */; };
+		1C0ABFF3206444D6000C8FB6 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFF2206444D6000C8FB6 /* PageViewController.swift */; };
+		1C0ABFF5206444FA000C8FB6 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFF4206444FA000C8FB6 /* Tab.swift */; };
+		1C0ABFF820644521000C8FB6 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFF620644521000C8FB6 /* CollectionViewCell.swift */; };
+		1C0ABFF920644521000C8FB6 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C0ABFF720644521000C8FB6 /* CollectionViewCell.xib */; };
+		1C0ABFFB2064455D000C8FB6 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFFA2064455D000C8FB6 /* GeneralViewController.swift */; };
+		1C0ABFFD2064457D000C8FB6 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFFC2064457D000C8FB6 /* ShareViewController.swift */; };
+		1C0ABFFF206445A1000C8FB6 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFFE206445A1000C8FB6 /* OthersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +44,14 @@
 		1C0ABFE120644464000C8FB6 /* InfiniteScrollableTabBarControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfiniteScrollableTabBarControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C0ABFE520644464000C8FB6 /* InfiniteScrollableTabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollableTabBarControllerTests.swift; sourceTree = "<group>"; };
 		1C0ABFE720644464000C8FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C0ABFF0206444B1000C8FB6 /* InfiniteScrolling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrolling.swift; sourceTree = "<group>"; };
+		1C0ABFF2206444D6000C8FB6 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		1C0ABFF4206444FA000C8FB6 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		1C0ABFF620644521000C8FB6 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		1C0ABFF720644521000C8FB6 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		1C0ABFFA2064455D000C8FB6 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		1C0ABFFC2064457D000C8FB6 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		1C0ABFFE206445A1000C8FB6 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +95,14 @@
 			children = (
 				1C0ABFD020644463000C8FB6 /* AppDelegate.swift */,
 				1C0ABFD220644463000C8FB6 /* ViewController.swift */,
+				1C0ABFF0206444B1000C8FB6 /* InfiniteScrolling.swift */,
+				1C0ABFF2206444D6000C8FB6 /* PageViewController.swift */,
+				1C0ABFF4206444FA000C8FB6 /* Tab.swift */,
+				1C0ABFF620644521000C8FB6 /* CollectionViewCell.swift */,
+				1C0ABFF720644521000C8FB6 /* CollectionViewCell.xib */,
+				1C0ABFFA2064455D000C8FB6 /* GeneralViewController.swift */,
+				1C0ABFFC2064457D000C8FB6 /* ShareViewController.swift */,
+				1C0ABFFE206445A1000C8FB6 /* OthersViewController.swift */,
 				1C0ABFD420644463000C8FB6 /* Main.storyboard */,
 				1C0ABFD720644463000C8FB6 /* Assets.xcassets */,
 				1C0ABFD920644463000C8FB6 /* LaunchScreen.storyboard */,
@@ -181,6 +205,7 @@
 			files = (
 				1C0ABFDB20644463000C8FB6 /* LaunchScreen.storyboard in Resources */,
 				1C0ABFD820644463000C8FB6 /* Assets.xcassets in Resources */,
+				1C0ABFF920644521000C8FB6 /* CollectionViewCell.xib in Resources */,
 				1C0ABFD620644463000C8FB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,7 +225,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C0ABFD320644463000C8FB6 /* ViewController.swift in Sources */,
+				1C0ABFFB2064455D000C8FB6 /* GeneralViewController.swift in Sources */,
+				1C0ABFFF206445A1000C8FB6 /* OthersViewController.swift in Sources */,
 				1C0ABFD120644463000C8FB6 /* AppDelegate.swift in Sources */,
+				1C0ABFF820644521000C8FB6 /* CollectionViewCell.swift in Sources */,
+				1C0ABFF5206444FA000C8FB6 /* Tab.swift in Sources */,
+				1C0ABFF1206444B1000C8FB6 /* InfiniteScrolling.swift in Sources */,
+				1C0ABFFD2064457D000C8FB6 /* ShareViewController.swift in Sources */,
+				1C0ABFF3206444D6000C8FB6 /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
