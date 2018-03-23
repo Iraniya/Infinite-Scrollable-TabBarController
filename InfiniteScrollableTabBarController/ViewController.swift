@@ -29,7 +29,17 @@ class ViewController: UIViewController {
     private var numPages = 0
     private var selectedIndex = 0
     
-    @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
+    @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer?) {
+        swipeCollectionViewRight()
+        swipeContainerViewRight()
+    }
+    
+    @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer?) {
+       swipeCollectinViewLeft()
+        swipeContainerViewLeft()
+    }
+    
+    func swipeCollectionViewRight() {
         selectedIndex = selectedIndex - 1
         selectedIndex = mod(a: selectedIndex, b: numPages)
         infiniteScrollingBehaviour.scroll(toElementAtIndex: selectedIndex, withCcrollPosition: .left)
@@ -37,27 +47,31 @@ class ViewController: UIViewController {
         let originalIndex = infiniteScrollingBehaviour.indexInBoundaryDataSet(forIndexInOriginalDataSet: selectedIndex)
         let indexPath = IndexPath(item: originalIndex, section: 0)
         collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-        
+    }
+    
+    func swipeCollectinViewLeft() {
+        selectedIndex = selectedIndex + 1
+        selectedIndex = mod(a: selectedIndex, b: numPages)
+        infiniteScrollingBehaviour.scroll(toElementAtIndex: selectedIndex, withCcrollPosition: .right)
+        let originalIndex = infiniteScrollingBehaviour.indexInBoundaryDataSet(forIndexInOriginalDataSet: selectedIndex)
+        let indexPath = IndexPath(item: originalIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+    }
+    
+    func swipeContainerViewLeft() {
+        //upadte content view
+        let incrementOne = mod(a: selectedIndex , b: numPages)
+        let viewController = contaierViewController.getViewControllerAtIndex(index: incrementOne)
+        contaierViewController.setViewControllers([viewController!], direction: .forward, animated: true, completion: nil)
+    }
+    
+    func swipeContainerViewRight() {
         //upadte content view
         let incrementOne = mod(a: selectedIndex, b: numPages)
         let viewController = contaierViewController.getViewControllerAtIndex(index: incrementOne)
         contaierViewController.setViewControllers([viewController!], direction: .reverse, animated: true, completion: nil)
     }
     
-    @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
-        selectedIndex = selectedIndex + 1
-        selectedIndex = mod(a: selectedIndex, b: numPages)
-        infiniteScrollingBehaviour.scroll(toElementAtIndex: selectedIndex, withCcrollPosition: .right)
-        print("left \(selectedIndex)")
-        let originalIndex = infiniteScrollingBehaviour.indexInBoundaryDataSet(forIndexInOriginalDataSet: selectedIndex)
-        let indexPath = IndexPath(item: originalIndex, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-        
-        //upadte content view
-        let incrementOne = mod(a: selectedIndex , b: numPages)
-        let viewController = contaierViewController.getViewControllerAtIndex(index: incrementOne)
-        contaierViewController.setViewControllers([viewController!], direction: .forward, animated: true, completion: nil)
-    }
     
     func mod(a: Int, b: Int) -> Int {
         let r: Int = a % b;
@@ -92,7 +106,7 @@ class ViewController: UIViewController {
         viewControllers = [generalVC, shareVC, othersVC]
         numPages = viewControllers.count
         registerCell()
-        viewControllers = [generalVC,shareVC,othersVC]
+        viewControllers = [generalVC,shareVC, othersVC]
         addContentPageController()
         selectedIndex = 1 // setting selected index 1
     }
@@ -140,9 +154,14 @@ extension ViewController: InfiniteScrollingBehaviourDelegate {
 
 
 extension ViewController : PageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishSwipingViewController viewController: UIViewController, withlastIndex index: Int) {
-        print("index\(index)")
-        print("selectedIndex\(selectedIndex)")
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishSwipingViewController viewController: UIViewController, withDirection direction: UIPageViewControllerNavigationDirection, andCurrentIndex: Int) {
+        if direction == .forward {
+            print("forward")
+            swipeCollectinViewLeft()
+        } else {
+            print("reverse")
+            swipeCollectionViewRight()
+        }
+        
     }
-    
 }

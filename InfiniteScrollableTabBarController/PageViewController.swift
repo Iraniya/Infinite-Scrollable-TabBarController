@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishSwipingViewController viewController: UIViewController, withlastIndex index: Int)
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishSwipingViewController viewController: UIViewController, withDirection direction:UIPageViewControllerNavigationDirection, andCurrentIndex: Int)
 }
 
 class PageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
@@ -18,6 +18,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     var controllerArray = [UIViewController]()
     var currentIndex = 0
     var customDelegate: PageViewControllerDelegate?
+    var nextIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,15 +79,36 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         return nil
     }
     
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        
+        guard let index = controllerArray.index(of: pendingViewControllers[0]) else {
+            fatalError("error")
+        }
+        nextIndex = index
+        //print("1nextIndex\(nextIndex)")
+       // customDelegate?.pageViewController(self, didFinishSwipingViewController: previousViewControllers[0], withlastIndex: index)
+        
+    }
+    
+    func getDirectionFrom(_ currentIndex: Int, andLastIndex lastIndex: Int) -> UIPageViewControllerNavigationDirection {
+        if currentIndex == mod(a: lastIndex + 1 , b: totalCount) {
+            return UIPageViewControllerNavigationDirection.forward
+        } else {
+            return UIPageViewControllerNavigationDirection.reverse
+        }
+    }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            // print(currentIndex)
-            
-            guard var index = controllerArray.index(of: previousViewControllers[0]) else {
+            guard let index = controllerArray.index(of: previousViewControllers[0]) else {
                 fatalError("error")
             }
-            customDelegate?.pageViewController(self, didFinishSwipingViewController: previousViewControllers[0], withlastIndex: index)
+            
+            let swipeDirection = (getDirectionFrom(nextIndex, andLastIndex: index))
+            currentIndex = nextIndex
+            customDelegate?.pageViewController(self, didFinishSwipingViewController: previousViewControllers[0], withDirection: swipeDirection, andCurrentIndex: currentIndex)
+        } else {
+          //if swipe fail do things here
         }
     }
     
