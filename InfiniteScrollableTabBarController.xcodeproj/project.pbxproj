@@ -21,6 +21,7 @@
 		1C0ABFFB2064455D000C8FB6 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFFA2064455D000C8FB6 /* GeneralViewController.swift */; };
 		1C0ABFFD2064457D000C8FB6 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFFC2064457D000C8FB6 /* ShareViewController.swift */; };
 		1C0ABFFF206445A1000C8FB6 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0ABFFE206445A1000C8FB6 /* OthersViewController.swift */; };
+		1CE8F621206983D900EC2EA4 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8F620206983D900EC2EA4 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		1C0ABFFA2064455D000C8FB6 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		1C0ABFFC2064457D000C8FB6 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		1C0ABFFE206445A1000C8FB6 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
+		1CE8F620206983D900EC2EA4 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,13 +95,14 @@
 		1C0ABFCF20644463000C8FB6 /* InfiniteScrollableTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				1C0ABFD020644463000C8FB6 /* AppDelegate.swift */,
 				1C0ABFD220644463000C8FB6 /* ViewController.swift */,
+				1CE8F620206983D900EC2EA4 /* TestViewController.swift */,
 				1C0ABFF0206444B1000C8FB6 /* InfiniteScrolling.swift */,
 				1C0ABFF2206444D6000C8FB6 /* PageViewController.swift */,
 				1C0ABFF4206444FA000C8FB6 /* Tab.swift */,
 				1C0ABFF620644521000C8FB6 /* CollectionViewCell.swift */,
 				1C0ABFF720644521000C8FB6 /* CollectionViewCell.xib */,
+				1C0ABFD020644463000C8FB6 /* AppDelegate.swift */,
 				1C0ABFFA2064455D000C8FB6 /* GeneralViewController.swift */,
 				1C0ABFFC2064457D000C8FB6 /* ShareViewController.swift */,
 				1C0ABFFE206445A1000C8FB6 /* OthersViewController.swift */,
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE8F621206983D900EC2EA4 /* TestViewController.swift in Sources */,
 				1C0ABFD320644463000C8FB6 /* ViewController.swift in Sources */,
 				1C0ABFFB2064455D000C8FB6 /* GeneralViewController.swift in Sources */,
 				1C0ABFFF206445A1000C8FB6 /* OthersViewController.swift in Sources */,

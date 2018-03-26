@@ -6,6 +6,7 @@
 //  Copyright © 2018 Iraniya Naynesh. All rights reserved.
 //
 
+
 import UIKit
 
 public protocol InfiniteScrollingBehaviourDelegate: class {
@@ -45,23 +46,22 @@ class SnappingCollectionViewLayout: UICollectionViewFlowLayout {
         
         var offsetAdjustment = CGFloat.greatestFiniteMagnitude
         let horizontalOffset = proposedContentOffset.x + collectionView.contentInset.left
-        print("horizontalOffset \(horizontalOffset)")
+        //print("horizontalOffset \(horizontalOffset)")
         
         let targetRect = CGRect(x: proposedContentOffset.x, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
-        print("targetRect \(targetRect)")
+        //print("targetRect \(targetRect)")
         
         let layoutAttributesArray = super.layoutAttributesForElements(in: targetRect)
         
         layoutAttributesArray?.forEach({ (layoutAttributes) in
             let itemOffset = layoutAttributes.frame.origin.x
-            print("itemOffset \(itemOffset)")
+            //print("itemOffset \(itemOffset)")
             if fabsf(Float(itemOffset - horizontalOffset)) < fabsf(Float(offsetAdjustment)) {
                 offsetAdjustment = itemOffset - horizontalOffset
-                print("offsetAdjustment \(offsetAdjustment)")
+                //print("offsetAdjustment \(offsetAdjustment)")
             }
         })
         
-        print("proposedContentOffset.x \(proposedContentOffset.x) ,offsetAdjustment \(offsetAdjustment) , proposedContentOffset.y \(proposedContentOffset.y)")
         return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
     }
 }
@@ -90,7 +90,8 @@ public class InfiniteScrollingBehaviour: NSObject {
     
     fileprivate(set) public var collectionConfiguration: CollectionViewConfiguration
     
-    public init(withCollectionView collectionView: UICollectionView, andData dataSet: [InfiniteScollingData], delegate: InfiniteScrollingBehaviourDelegate, configuration: CollectionViewConfiguration = .default) {
+    public init(withCollectionView collectionView: UICollectionView, andData dataSet: [InfiniteScollingData],
+                delegate: InfiniteScrollingBehaviourDelegate, configuration: CollectionViewConfiguration = .default) {
         self.collectionView = collectionView
         self.dataSet = dataSet
         self.collectionConfiguration = configuration
@@ -154,11 +155,11 @@ public class InfiniteScrollingBehaviour: NSObject {
     }
     
     private func scrollToFirstElement() {
-        scroll(toElementAtIndex: 0, withCcrollPosition: .left)
+        scroll(toElementAtIndex: 1, withScrollPosition: .left)
     }
     
     
-    public func scroll(toElementAtIndex index: Int, withCcrollPosition scrollPosition: UICollectionViewScrollPosition) {
+    public func scroll(toElementAtIndex index: Int, withScrollPosition scrollPosition: UICollectionViewScrollPosition) {
         let boundaryDataSetIndex = indexInBoundaryDataSet(forIndexInOriginalDataSet: index)
         let indexPath = IndexPath(item: boundaryDataSetIndex, section: 0)
         //        let scrollPosition: UICollectionViewScrollPosition = scrollPosition
@@ -212,6 +213,7 @@ extension InfiniteScrollingBehaviour: UICollectionViewDelegateFlowLayout {
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = CGSize(width: cellSize, height: collectionView.bounds.size.height)
+        //print("collectionView indexPath\(indexPath)")
         return size
     }
     
@@ -245,12 +247,12 @@ extension InfiniteScrollingBehaviour: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, shouldUpdateFocusIn context: UICollectionViewFocusUpdateContext) -> Bool {
-        print("shouldUpdateFocusIn")
+        //print("shouldUpdateFocusIn")
         return true
     }
     
     func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        print("didUpdateFocus")
+        //print("didUpdateFocus")
     }
 }
 
@@ -274,17 +276,15 @@ extension InfiniteScrollingBehaviour: UICollectionViewDataSource {
 
 extension Double {
     var cgFloat: CGFloat {
-        get {
-            return CGFloat(self)
-        }
+        get { return CGFloat(self) }
     }
 }
 
 extension Int {
     var cgFloat: CGFloat {
-        get {
-            return CGFloat(self)
-        }
+        get { return CGFloat(self) }
     }
 }
+
+
 

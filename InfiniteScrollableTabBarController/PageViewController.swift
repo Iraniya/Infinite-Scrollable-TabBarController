@@ -31,63 +31,29 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        guard var index = controllerArray.index(of: viewController) else {
-            return nil
-        }
-        
+        guard var index = controllerArray.index(of: viewController) else { return nil }
         index = index - 1;
-        
         index = mod(a: index, b: totalCount)
         return getViewControllerAtIndex(index: index)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
-        
-        guard var index = controllerArray.index(of: viewController) else {
-            return nil
-        }
-        
+        guard var index = controllerArray.index(of: viewController) else { return nil }
         index = index + 1;
         index = mod(a: index, b: totalCount)
-        if (index == controllerArray.count) {
-            return nil;
-        }
+        if (index == controllerArray.count) { return nil; }
         return getViewControllerAtIndex(index: index)
     }
     
     func getViewControllerAtIndex(index: NSInteger) -> UIViewController? {
-        
-        switch index {
-        case 0:
-            
-            //            let generaVC = self.storyboard?.instantiateViewController(withIdentifier: "GeneralViewController") as! GeneralViewController
-            let generaVC = controllerArray[0] as! GeneralViewController
-            generaVC.pageIndex = index
-            return generaVC
-        case 1:
-            let shareVC = controllerArray[1] as! ShareViewController //self.storyboard?.instantiateViewController(withIdentifier: "ShareViewController") as! ShareViewController
-            shareVC.pageIndex = index
-            return shareVC
-        case 2:
-            let otherVC = controllerArray[2] as! OthersViewController //self.storyboard?.instantiateViewController(withIdentifier: "OthersViewController") as! OthersViewController
-            otherVC.pageIndex = index
-            return otherVC
-        default: break
-            
-        }
-        return nil
+        return controllerArray[index]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         
-        guard let index = controllerArray.index(of: pendingViewControllers[0]) else {
-            fatalError("error")
-        }
+        guard let index = controllerArray.index(of: pendingViewControllers[0]) else { fatalError("pageViewController willTransitionTo fatalError") }
         nextIndex = index
-        //print("1nextIndex\(nextIndex)")
-       // customDelegate?.pageViewController(self, didFinishSwipingViewController: previousViewControllers[0], withlastIndex: index)
-        
     }
     
     func getDirectionFrom(_ currentIndex: Int, andLastIndex lastIndex: Int) -> UIPageViewControllerNavigationDirection {
@@ -100,16 +66,12 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            guard let index = controllerArray.index(of: previousViewControllers[0]) else {
-                fatalError("error")
-            }
+            guard let index = controllerArray.index(of: previousViewControllers[0]) else { fatalError("didFinishAnimating fatalError") }
             
             let swipeDirection = (getDirectionFrom(nextIndex, andLastIndex: index))
             currentIndex = nextIndex
             customDelegate?.pageViewController(self, didFinishSwipingViewController: previousViewControllers[0], withDirection: swipeDirection, andCurrentIndex: currentIndex)
-        } else {
-          //if swipe fail do things here
-        }
+        } else { /*if swipe fail do things here */}
     }
     
     func mod(a: Int, b: Int) -> Int {
